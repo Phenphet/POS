@@ -20,12 +20,18 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            <div class="content-header">
+            <div class="content-header d-flex justify-content-between">
                 <h4>items</h4>
+                <div class="mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <button type="button" class="btn btn-outline-secondary">ค้นหา</button>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <?php for($i = 0; $i < 10; $i++) : ?>
-                <div class="col-3">
+                <div class="col-md-3 col-12">
                     <div class="card">
                         <div class="card-header text-center">
                             <h5>title | <?php echo $i+1; ?> </h5>

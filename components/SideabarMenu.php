@@ -65,5 +65,17 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="sale.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Store management</p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="sale.php" class="nav-link">
+                <i class="nav-icon fas fa-edit"></i>
+                <p>Report</p>
+            </a>
+        </li>
     </ul>
 </nav>
