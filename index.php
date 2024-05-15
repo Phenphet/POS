@@ -20,12 +20,29 @@
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
-            hello, world
+            <div class="content-header">
+                <h4>items</h4>
+            </div>
+            <div class="row">
+                <?php for($i = 0; $i < 10; $i++) : ?>
+                <div class="col-3">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h5>title | <?php echo $i+1; ?> </h5>
+                        </div>
+                        <div class="content p-3">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae assumenda nihil eaque nulla at id vero sapiente et quisquam ratione. Vero fuga culpa voluptate. Cumque inventore nihil odio ut eligendi voluptate id harum voluptates nobis amet velit natus quia, sapiente unde odit enim dolorum corrupti exercitationem nisi vero ea dolores?</p>
+                        </div>
+                        <div class="card-footer">
+                            footer card items
+                        </div>
+                    </div>
+                </div>
+                <?php endfor ?>
+            </div>
         </div>
     </section>
     <!-- /.content -->
 </div> 
 <!-- /.content-wrapper -->
-
-
 <?php include_once('layout/footer.php'); ?>

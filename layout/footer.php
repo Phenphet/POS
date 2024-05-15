@@ -32,5 +32,5 @@
     <!-- AdminLTE App -->
     <script src="assets/dist/js/adminlte.js"></script>
     <script src="assets/dist/js/pages/dashboard.js"></script>
-</body>
+</body> 
 </html>
