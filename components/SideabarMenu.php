@@ -23,7 +23,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="about.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Dashboard v3</p>
                     </a>
@@ -46,9 +46,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="category.php" class="nav-link">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Advanced Elements</p>
+                        <p>see category</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -72,7 +72,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="sale.php" class="nav-link">
+            <a href="report.php" class="nav-link">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>Report</p>
             </a>
