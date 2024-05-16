@@ -20,7 +20,36 @@
             <div class="content-header">
                 <h4>Store management</h4>
             </div>
+            <div class="row">
+                <?php for($i = 0; $i < 12; $i++) : ?>
+                    <div class="col-lg-3 col-12">
+                        <button style="border: none;" onclick="saleItem(<?php echo $i; ?>)" class="btn">
+                            <div class="card">
+                                <div class="card-header">
+                                    item sale
+                                </div>
+                                <div class="card-body">
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti nam 
+                                        dignissimos voluptatum quos facere molestias laborum vitae eaque in, 
+                                        cupiditate corporis quod explicabo sint eveniet nulla? Omnis dolore quam 
+                                        corporis nesciunt labore minima aut. Ipsa obcaecati non numquam consequuntur 
+                                        debitis ad quia recusandae, quisquam sint aut dignissimos, ipsam perspiciatis tempora!
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    click + 
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                <?php endfor ?>
+            </div>
         </div>
     </section>
 </div> 
 <?php include_once('layout/footer.php'); ?>
+
+<script>
+    const saleItem = (id) => {console.log(id)} 
+</script>
