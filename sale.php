@@ -23,7 +23,7 @@
             <div class="row">
                 <?php for($i = 0; $i < 12; $i++) : ?>
                     <div class="col-lg-3 col-12">
-                        <button style="border: none;" onclick="saleItem(<?php echo $i; ?>)" class="btn">
+                        <a href="card.php?id=<?php echo $i; ?>" class="btn">
                             <div class="card">
                                 <div class="card-header">
                                     item sale
@@ -41,38 +41,11 @@
                                     click + 
                                 </div>
                             </div>
-                        </button>
+                        </a>
                     </div>
                 <?php endfor ?>
             </div>
         </div>
-        <button onclick="oderItem()">check oder</button>
-        <button onclick="clearLocal()">clear oder</button>
     </section>
 </div> 
-<?php include_once('layout/footer.php'); ?>
-
-<script>
-    const oder = []
-    const saleItem = (id) => {    
-        oder.push(id)
-        console.log(oder)
-        localStorage.setItem('oder', JSON.stringify(oder))
-    }
-
-
-    const oderItem = () => {
-        const item = localStorage.getItem('oder')
-        const data = JSON.parse(item)
-        
-        const counts = {}
-        data.forEach((value) => {
-            counts[value] = (counts[value] || 0) + 1;
-        });
-        console.log(counts);
-    }
-
-    const clearLocal = () => {
-        localStorage.removeItem('oder')
-    }
-</script>
+<?php include_once('layout/footer.php'); ?>   
