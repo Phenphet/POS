@@ -34,7 +34,7 @@
                                         dignissimos voluptatum quos facere molestias laborum vitae eaque in, 
                                         cupiditate corporis quod explicabo sint eveniet nulla? Omnis dolore quam 
                                         corporis nesciunt labore minima aut. Ipsa obcaecati non numquam consequuntur 
-                                        debitis ad quia recusandae, quisquam sint aut dignissimos, ipsam perspiciatis tempora!
+                                        debitis ad quia recusandae,
                                     </p>
                                 </div>
                                 <div class="card-footer">
