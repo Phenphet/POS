@@ -8,7 +8,7 @@
         }
 
         public function getProduct(){
-            $query = 'SELECT productID, productName, productPrice, img FROM tblproducts';
+            $query = 'SELECT productID, productName, productPrice, img FROM tblproducts ORDER BY productID DESC';
             $stmt = $this->con->prepare($query);
             $stmt->execute();
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
