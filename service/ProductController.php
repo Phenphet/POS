@@ -15,16 +15,4 @@
             $result = $stmt->fetchAll();
             return $result;
         }
-
-        // public function getProductAndCategoryOne($keywords){
-        //     $query = 'SELECT productID, productName, productPrice, img FROM tblproducts WHERE productName LIKE :keywords';
-        //     $stmt = $this->con->prepare($query);
-        //     $stmt->execute([':keywords' => $keywords]);
-        //     $result = $stmt->fetchAll();
-        //     return $result;
-        // }
-
-        // public function productAdd($productName, $productCategory, $productStock, $productPrice){
-              
-        // }
     }

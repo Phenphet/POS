@@ -1,4 +1,13 @@
-<?php include_once('layout/header.php'); ?>
+<?php 
+    include_once('layout/header.php'); 
+    
+    include_once('config/Database.php');
+    include_once('service/ProductController.php');
+
+    $db = new DB;
+    $product = new ProductController($db);
+
+    ?>
 <div class="content-wrapper">   
     <div class="content-header">
         <div class="container-fluid">
@@ -16,34 +25,44 @@
         </div>
     </div>
     <section class="content">
-        <div class="container-fluid">
-            <div class="content-header d-flex justify-content-between">
-                <h4>items</h4>
-                <div class="mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <button type="button" class="btn btn-outline-secondary">ค้นหา</button>
-                    </div>
-                </div>
+        <div class="content-header d-flex justify-content-between">
+        <div class="mb-3">
+               <button class="btn btn-info">เพิ่มรายการ</button>
             </div>
-            <div class="row">
-                <?php for($i = 0; $i < 10; $i++) : ?>
-                <div class="col-md-3 col-12">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h5>title | <?php echo $i+1; ?> </h5>
-                        </div>
-                        <div class="content p-3">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae assumenda nihil eaque nulla at id vero sapiente et quisquam ratione. Vero fuga culpa voluptate. Cumque inventore nihil odio ut eligendi voluptate id harum voluptates nobis amet velit natus quia, sapiente unde odit enim dolorum corrupti exercitationem nisi vero ea dolores?</p>
-                        </div>
-                        <div class="card-footer">
-                            footer card items
-                        </div>
-                    </div>
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control">
+                    <button type="button" class="btn btn-outline-secondary">ค้นหา</button>
                 </div>
-                <?php endfor ?>
             </div>
         </div>
+        <div class="container-fluid">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">รหัสสินค้า</th>
+                    <th scope="col">รูปสินค้า</th>
+                    <th scope="col">ชื่อสินค้า</th>
+                    <th scope="col">หมวดหมู่</th>
+                    <th scope="col">ราคาสินค้า</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $allProduct = $product->getProduct(); 
+                    foreach($allProduct as $item): ?>
+                        <tr>
+                            <th scope="row"><?php echo $item['productID']?></th>
+                            <td><img src="<?php echo $item['img']?>" alt="" width="50px" class="img-thumbnail"></td>
+                            <td><?php echo $item['productName']?></td>
+                            <td></td>
+                            <td><?php echo $item['productPrice']?> บาท</td>
+                            
+                        </tr>
+                    <?php  endforeach ?>
+                </tbody>
+            </table>
+        </div>
+
     </section>
 </div> 
 <?php include_once('layout/footer.php'); ?>

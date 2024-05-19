@@ -36,8 +36,10 @@
                             <div class="card-body">
                                 <img src="<?php echo $item['img']; ?>" alt="" class="card-img-top">
                             </div>
-                            <div class="card-footer text-center">
+                            <div class="card-footer">
+                                <h6>ราคา : <?php  echo $item['productPrice']; ?> บาท</h6>
                             </div>
+                          
                         </div>
                     </div>
                 <?php  endforeach ?>
