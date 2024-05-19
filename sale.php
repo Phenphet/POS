@@ -12,11 +12,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Sale</h1>
+                    <h1 class="m-0">Store</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Sale</a></li>
+                        <li class="breadcrumb-item"><a href="#">Store</a></li>
                         <li class="breadcrumb-item active">Store management</li>
                     </ol>
                 </div>
