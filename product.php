@@ -45,24 +45,33 @@
                     <th scope="col">ชื่อสินค้า</th>
                     <th scope="col">หมวดหมู่</th>
                     <th scope="col">ราคาสินค้า</th>
+                    <th scope="col">create_at</th>
+                    <th scope="col">update_at</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $allProduct = $product->getProduct(); 
+                    <?php $allProduct = $product->tableProduct();
                     foreach($allProduct as $item): ?>
                         <tr>
                             <th scope="row"><?php echo $item['productID']?></th>
                             <td><img src="<?php echo $item['img']?>" alt="" width="50px" class="img-thumbnail"></td>
                             <td><?php echo $item['productName']?></td>
-                            <td></td>
+                            <td><?php echo $item['categoryName']?></td>
                             <td><?php echo $item['productPrice']?> บาท</td>
-                            
+                            <td><?php echo $item['created_at']?></td>
+                            <td><?php echo $item['updated_at']?></td>
+                            <td>
+                                <div>
+                                    <button>edit</button>
+                                    <button>delete</button>
+                                </div>
+                            </td>
                         </tr>
                     <?php  endforeach ?>
                 </tbody>
             </table>
         </div>
-
     </section>
 </div> 
 <?php include_once('layout/footer.php'); ?>
