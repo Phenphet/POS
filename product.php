@@ -36,8 +36,8 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
-            <table class="table">
+        <div class="container-fluid table-responsive">
+            <table class="table ">
                 <thead>
                     <tr>
                     <th scope="col">รหัสสินค้า</th>
@@ -63,12 +63,12 @@
                             <td><?php echo $item['updated_at']?></td>
                             <td>
                                 <div>
-                                    <button>edit</button>
-                                    <button>delete</button>
+                                    <button class="btn btn-warning">edit</button>
+                                    <button class="btn btn-danger">delete</button>
                                 </div>
                             </td>
                         </tr>
-                    <?php  endforeach ?>
+                    <?php  endforeach; ?>
                 </tbody>
             </table>
         </div>

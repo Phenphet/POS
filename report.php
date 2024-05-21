@@ -1,5 +1,5 @@
 <?php include_once('layout/header.php'); ?>
-<div class="content-wrapper">   
+<div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -20,7 +20,35 @@
             <div class="content-header">
                 <h4>Report management</h4>
             </div>
+            <div class="container-fluid table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php for($i = 0; $i < 20; $i++) : ?>
+                        <tr>
+                            <th scope="row"><?php echo $i+1;?></th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>
+                                <div>
+                                    <button class="btn btn-outline-info">view</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endfor; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </section>
-</div> 
+</div>
 <?php include_once('layout/footer.php'); ?>

@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="row gap-3 column-gap-3">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="card ">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
@@ -76,7 +76,6 @@
                                     <span class="text-muted">Since last week</span>
                                 </p>
                             </div>
-
                             <div class="position-relative mb-4">
                                 <div class="chartjs-size-monitor">
                                     <div class="chartjs-size-monitor-expand">
@@ -99,7 +98,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                     <div class="card ">
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
@@ -119,7 +118,6 @@
                                     <span class="text-muted">Since last month</span>
                                 </p>
                             </div>
-
                             <div class="position-relative mb-4">
                                 <div class="chartjs-size-monitor">
                                     <div class="chartjs-size-monitor-expand">
