@@ -74,4 +74,14 @@
         </div>
     </section>
 </div> 
+<?php 
+    $uri = $_SERVER['REQUEST_URI'];
+    if ($uri == $_SERVER['REQUEST_URI']){
+
+       echo "<script>
+                const active = document.getElementById('active2')
+                active.classList.add('active')
+            </script>";
+    }
+?>
 <?php include_once('layout/footer.php'); ?>
