@@ -28,5 +28,4 @@
         </div>
     </section>
 </div>
-
 <?php include_once('layout/footer.php'); ?>

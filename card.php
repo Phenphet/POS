@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    
     if(isset($_GET['id'])){
         $id = $_GET['id'];
         if(isset($id)){
