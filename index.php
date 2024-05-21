@@ -1,4 +1,9 @@
 <?php include_once('layout/header.php'); ?>
+<!-- <?php 
+    include_once('config/Database.php');
+    include_once('service/ProductController.php');
+    include_once('service/CategoryController.php');
+?> -->
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -147,7 +152,6 @@
 <?php 
     $uri = $_SERVER['REQUEST_URI'];
     if ($uri == $_SERVER['REQUEST_URI']){
-
        echo "<script>
                 const active = document.getElementById('active1')
                 active.classList.add('active')
@@ -155,3 +159,5 @@
     }
 ?>
 <?php include_once('layout/footer.php'); ?>
+<script src="assets/plugins/chart.js/Chart.min.js"></script>
+<script src="assets/dist/js/pages/dashboard3.js"></script>
