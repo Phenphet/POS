@@ -29,18 +29,19 @@
                 <?php $allProduct = $product->getProduct(); 
                 foreach($allProduct as $item): ?>
                     <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5><?php echo $item['productName'] ; ?></h5>
+                        <a class="btn m-0 p-0" href="#">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><?php echo $item['productName'] ; ?></h5>
+                                </div>
+                                <div class="card-body">
+                                    <img src="<?php echo $item['img']; ?>" alt="" class="card-img-top">
+                                </div>
+                                <div class="card-footer">
+                                    <h6>ราคา : <?php  echo $item['productPrice']; ?> บาท</h6>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <img src="<?php echo $item['img']; ?>" alt="" class="card-img-top">
-                            </div>
-                            <div class="card-footer">
-                                <h6>ราคา : <?php  echo $item['productPrice']; ?> บาท</h6>
-                            </div>
-                          
-                        </div>
+                        </a>
                     </div>
                 <?php  endforeach ?>
             </div>
