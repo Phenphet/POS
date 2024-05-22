@@ -27,7 +27,7 @@
     <section class="content">
         <div class="content-header d-flex justify-content-between">
         <div class="mb-3">
-               <button class="btn btn-info">เพิ่มรายการ</button>
+               <a href="addproduct.php" class="btn btn-info">เพิ่มรายการ</a>
             </div>
             <div class="mb-3">
                 <div class="input-group">
@@ -63,8 +63,8 @@
                             <td><?php echo $item['updated_at']?></td>
                             <td>
                                 <div>
-                                    <button class="btn btn-warning">edit</button>
-                                    <button class="btn btn-danger">delete</button>
+                                    <a href="editproduct.php?productid=<?php echo $item['productID']?>" class="btn btn-warning">edit</a>
+                                    <a class="btn btn-danger">delete</a>
                                 </div>
                             </td>
                         </tr>

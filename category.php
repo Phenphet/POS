@@ -20,7 +20,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Category</a></li>
-                        <li class="breadcrumb-item active">see Category</li>
+                        <li class="breadcrumb-item active">All Category</li>
                     </ol>
                 </div>
             </div>
@@ -29,7 +29,7 @@
     <section class="content">
         <div class="content-header d-flex justify-content-between">
         <div class="mb-3">
-               <button class="btn btn-info">เพิ่มรายการ</button>
+               <a href="addcategory.php" class="btn btn-info">เพิ่มรายการ</a>
             </div>
             <div class="mb-3">
                 <div class="input-group">
@@ -59,8 +59,8 @@
                             <td><?php echo $item['updated_at']?></td>
                             <td>
                                 <div>
-                                    <button class="btn btn-warning">edit</button>
-                                    <button class="btn btn-danger">delete</button>
+                                    <a href="editcategory.php?categoryid=<?php echo $item['categoryID']?>" class="btn btn-warning">edit</a>
+                                    <a class="btn btn-danger">delete</a>
                                 </div>
                             </td>
                         </tr>
