@@ -29,10 +29,10 @@
                 <?php $allProduct = $product->getProduct(); 
                 foreach($allProduct as $item): ?>
                     <div class="col-12 col-lg-3">
-                        <a class="btn m-0 p-0" href="#">
+                        <button class="btn m-0 p-0" onclick='addcard(<?php echo $item["productID"]; ?>)'>
                             <div class="card">
                                 <div class="card-header">
-                                    <h5><?php echo $item['productName'] ; ?></h5>
+                                    <h5><?php echo $item['productName']; ?></h5>
                                 </div>
                                 <div class="card-body">
                                     <img src="assets/img/<?php echo $item['img']; ?>" alt="" class="card-img-top">
@@ -41,7 +41,7 @@
                                     <h6>ราคา : <?php  echo $item['productPrice']; ?> บาท</h6>
                                 </div>
                             </div>
-                        </a>
+                        </button>
                     </div>
                 <?php  endforeach ?>
             </div>
@@ -58,4 +58,18 @@
             </script>";
     }
 ?>
+
+<script>
+    const addcard = (item) => {
+        fetch(`views/card.php?item=${item}&action=add`)
+        .then(response => {
+            if (!response.ok) { throw new Error('Network response was not ok ' + response.statusText); }
+            return response.json();
+        })
+        .then(data => {
+            location.reload()
+        })
+        .catch(error => console.error('Error:', error))
+    } 
+</script>
 <?php include_once('layout/footer.php'); ?>

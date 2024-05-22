@@ -6,18 +6,18 @@
                     $_SESSION['cardItem'] = [];
                 }
                 $_SESSION['cardItem'][] = $id;
-                return 'add item success!';
+                return true;
             }else{
-                return 'not found id';
+                return false;
             }
         }
 
         public function removeCardAll(){
             if($_SESSION['cardItem']) {
                 unset($_SESSION['cardItem']);
-                // session_destroy();
+                return true;
             }else{
-                return 'remove card item error!';
+                return false;
             }
         }
     }

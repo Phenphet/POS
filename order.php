@@ -17,9 +17,11 @@
             
                     foreach($countItem as $pId => $count){
                         echo 'สินค้า : '.$pId.'จำนวน : ' .$count.'<br>';
-                    }
-                    echo '<a href="remove.php">remove </a>';
-                }else{
+                    } ?>
+
+                    <button onclick="removeCard()">remove</button>
+                   
+                <?php }else{
                     echo '<a href="sale.php">no item</a>';
                     
                     echo '<br>';
@@ -28,4 +30,18 @@
         </div>
     </section>
 </div>
+
+<script>
+    const removeCard = () => {
+        fetch(`views/card.php?action=remove`)
+        .then(response => {
+            if (!response.ok) { throw new Error('Network response was not ok ' + response.statusText);}
+            return response.json();
+        })
+        .then(data => {
+            location.reload()
+        })
+        .catch(error => console.error('Error:', error))
+    } 
+</script>
 <?php include_once('layout/footer.php'); ?>
