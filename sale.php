@@ -48,7 +48,6 @@
         </div>
     </section>
 </div> 
-
 <?php 
     $uri = $_SERVER['REQUEST_URI'];
     if ($uri == $_SERVER['REQUEST_URI']){
@@ -58,7 +57,6 @@
             </script>";
     }
 ?>
-
 <script>
     const addcard = (item) => {
         fetch(`views/card.php?item=${item}&action=add`)
