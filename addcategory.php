@@ -1,4 +1,9 @@
 <?php include_once('layout/header.php'); ?>
+
+<?php 
+    include_once('sevice/C');
+
+?>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">

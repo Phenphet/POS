@@ -1,4 +1,11 @@
 <?php include_once('layout/header.php'); ?>
+
+<!-- <?php 
+    if(isset($_POST['btnEdit'])){
+        
+    }
+
+?> -->
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -16,11 +23,11 @@
         </div>
     </div>
     <section>
-        <div class="card card-primary">
+        <div class="card card-warning">
             <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Edit</h3>
             </div>
-            <form>
+            <form action="<?php ?>"  method="POST">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
@@ -46,7 +53,7 @@
                 </div>
 
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-info" name="btnEdit">Submit</button>
                 </div>
             </form>
         </div>

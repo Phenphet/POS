@@ -26,4 +26,23 @@
             $result = $stmt->fetchAll();
             return $result;
         }
+
+        public function addProduct($productName, $productCategory, $productStock, $productPrice, $productImage){
+            $query = "INSERT INTO tblproducts (productName, productCategoryID, productStock, productPrice, deleted, img) 
+            VALUES(:productName, :productCategoryID, :productStock, :productPrice, 0, :img)";
+            $stmt = $this->con->prepare($query);
+            $stmt->bindParam(':productName', $productName);
+            $stmt->bindParam(':productCategoryID', $productCategory);
+            $stmt->bindParam(':productStock', $productStock);
+            $stmt->bindParam(':productPrice', $productPrice);
+            $stmt->bindParam(':img', $productImage);
+            try {
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                
+                echo 'error -> '.$e->getMessage();
+                return false;
+            }
+        }
     }

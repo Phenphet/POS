@@ -52,10 +52,10 @@
                 </thead>
                 <tbody>
                     <?php $allProduct = $product->tableProduct();
-                    foreach($allProduct as $item): ?>
+                    foreach($allProduct as $index => $item): ?>
                         <tr>
-                            <th scope="row"><?php echo $item['productID']?></th>
-                            <td><img src="<?php echo $item['img']?>" alt="" width="50px" class="img-thumbnail"></td>
+                            <th scope="row"><?php echo $index+1?></th>
+                            <td><img src="assets/img/<?php echo $item['img']?>" alt="<?php echo $item['img']?>" width="50px" class="img-thumbnail"></td>
                             <td><?php echo $item['productName']?></td>
                             <td><?php echo $item['categoryName']?></td>
                             <td><?php echo $item['productPrice']?> บาท</td>

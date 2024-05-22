@@ -35,7 +35,7 @@
                                     <h5><?php echo $item['productName'] ; ?></h5>
                                 </div>
                                 <div class="card-body">
-                                    <img src="<?php echo $item['img']; ?>" alt="" class="card-img-top">
+                                    <img src="assets/img/<?php echo $item['img']; ?>" alt="" class="card-img-top">
                                 </div>
                                 <div class="card-footer">
                                     <h6>ราคา : <?php  echo $item['productPrice']; ?> บาท</h6>
