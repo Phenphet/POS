@@ -1,5 +1,3 @@
-/* global Chart:false */
-
 $(function () {
   'use strict'
 
@@ -143,5 +141,3 @@ $(function () {
     }
   })
 })
-
-// lgtm [js/unused-local-variable]
