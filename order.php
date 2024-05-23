@@ -22,7 +22,7 @@
                     <button onclick="removeCard()">remove</button>
                    
                 <?php }else{
-                    echo '<a href="sale.php">no item</a>';
+                    echo '<a href="sale.php" class="btn btn-danger">no item</a>';
                     
                     echo '<br>';
                 }

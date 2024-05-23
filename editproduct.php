@@ -1,4 +1,13 @@
 <?php include_once('layout/header.php');?>
+<?php 
+    include_once('config/Database.php');
+    include_once('service/ProductController.php');
+    include_once('service/CategoryController.php');
+
+    $db = new DB;
+    $products = new ProductController($db);
+    $category = new CategoryController($db);
+?>
 <div class="content-wrapper">   
     <div class="content-header">
         <div class="container-fluid">
@@ -16,39 +25,76 @@
         </div>
     </div>
     <section>
-        <div class="card card-primary">
+        <div class="card card-warning">
             <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Edit</h3>
             </div>
-            <form>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+            <?php 
+                if(isset($_GET['product'])) :
+                    $idProduct = htmlspecialchars($_GET['product']);
+                    $dataProduct = $products->getProductOne($idProduct);
+                    if(!empty($dataProduct)) : ?>
+                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
+                            <?php foreach($dataProduct as $product): ?>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ชื่อสินค้า</label>
+                                        <input name="productName" type="text" class="form-control" id="productName" placeholder="กรอกชื่อของสินค้า" value="<?php echo $product['productName']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>กลุ่มสินค้า</label>
+                                        <select name="productCategory" class="form-control" id="productCategory">
+                                            <option value="<?php echo $product['CategoryID']?>"><?php echo $product['categoryName']?></option>
+                                            <?php 
+                                                $selectItem = $category->categorySelectItem();
+                                                foreach ($selectItem as $category) :
+                                                    if($category['categoryID'] != $product['CategoryID']):
+                                                        echo "<option value='{$category['categoryID']}'>{$category['categoryName']}</option>"; 
+                                                    endif;
+                                                endforeach;
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">จำนวนในคลัง</label>
+                                        <input name="productStock" type="text" class="form-control" id="productStock" placeholder="จำนวนในคลัง" value="<?php echo $product['productStock']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">ราคา</label>
+                                        <input name="productPrice" type="text" class="form-control" id="productPrice" placeholder="ราคา" value="<?php echo $product['productPrice']?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputFile">File input</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="productImage" name="productImage">
+                                            <label class="custom-file-label" for="productImage"><?php echo $product['img']?></label>
+                                            </div>
+                                                <div class="input-group-append">
+                                                <span class="input-group-text">Upload</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary" name="btnEdit">Submit</button>
                             </div>
-                            <div class="input-group-append">
-                                <span class="input-group-text">Upload</span>
-                            </div>
-                        </div>
-                    </div>
+                        </form>
+                    <?php else : 
+                            echo "  <script>
+                                        alert('ไม่พบข้อมูลที่คุณต้องการอัพเดต')
+                                        window.location.href = 'product.php'
+                                    </script>"; 
 
-                </div>
-
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
+                    endif;
+                else:
+                    echo " <script>
+                                alert('เกิดข้อผิดพลาดของระบบ')
+                                window.location.href = 'product.php'
+                            </script>";
+                endif;
+            ?>
         </div>
     </section>
 </div>
@@ -62,4 +108,9 @@
     }
 ?>
 <?php include_once('layout/footer.php'); ?>
-    
+<script src="assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+<script>
+    $(function () {
+        bsCustomFileInput.init();
+    });
+</script>

@@ -99,7 +99,7 @@
                     productPrice.classList.add('is-invalid')  
                 </script>";
         }else{
-            $nameFile = time().$productImage;
+            $nameFile = time().'-'.$productImage;
             $stmt = $product->addProduct($productName,$productCategory, $productStock,$productPrice, $nameFile);
             $allPathUpload = $path.$nameFile;
             if($stmt){
@@ -107,11 +107,11 @@
                 echo "<script>
                         alert('เพิ่มข้อมูลสืนค้าเรียบร้อย');
                     </script>";
-                    $productName = "";
-                    $productCategory = "";
-                    $productStock = "";
-                    $productPrice = "";
-                    $productImage = "";
+                $productName = "";
+                $productCategory = "";
+                $productStock = "";
+                $productPrice = "";
+                $productImage = "";
             }else{
                 die();
             }

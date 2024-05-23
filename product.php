@@ -63,7 +63,7 @@
                             <td><?php echo $item['updated_at']?></td>
                             <td>
                                 <div>
-                                    <a href="editproduct.php?productid=<?php echo $item['productID']?>" class="btn btn-warning">edit</a>
+                                    <a href="editproduct.php?product=<?php echo md5($item['productID']);?>" class="btn btn-warning">edit</a>
                                     <a class="btn btn-danger">delete</a>
                                 </div>
                             </td>
