@@ -24,4 +24,17 @@
             $result = $stmt->fetchAll();
             return $result;
         }
+
+        public function countcategory(){
+            $query = "SELECT 
+                        COUNT(*)
+                    FROM 
+                    tblcategorie";
+                
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchColumn();
+            return $result;
+        }
     } 

@@ -1,9 +1,16 @@
 <?php include_once('layout/header.php'); ?>
-<!-- <?php 
+<?php 
     include_once('config/Database.php');
     include_once('service/ProductController.php');
     include_once('service/CategoryController.php');
-?> -->
+
+    $db = new DB();
+    $product = new ProductController($db);
+    $category = new CategoryController($db);
+
+    $coutProduct =  $product->countProduct();
+    $coutcategory =  $category->countcategory();
+?> 
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -25,48 +32,36 @@
             <div class="row">
                 <div class="col-lg-3 col-12">
                     <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3>150</h3>
+                        <div class="inner text-center">
+                            <h3><?php  echo $coutProduct; ?></h3>
                             <p>Products</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
                         </div>
                         <a href="product.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
                     <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>150</h3>
+                        <div class="inner text-center">
+                            <h3><?php echo $coutcategory; ?></h3>
                             <p>Category</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
                         </div>
                         <a href="category.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
                     <div class="small-box bg-danger">
-                        <div class="inner">
+                        <div class="inner text-center">
                             <h3>150</h3>
-                            <p>New Orders</p>
-                        </div>
-                        <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <p>Orders</p>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
                 <div class="small-box bg-success">
-                    <div class="inner">
+                    <div class="inner text-center">
                         <h3>150</h3>
-                        <p>New Orders</p>
-                    </div>
-                    <div class="icon">
-                        <i class="ion ion-bag"></i>
+                        <p>Report</p>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>

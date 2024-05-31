@@ -1,7 +1,7 @@
 <ul class="navbar-nav ml-auto">
     <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
             <span class="badge badge-warning navbar-badge">
                 <?php 
                     if(isset($_SESSION['cardItem'])) {
@@ -24,16 +24,26 @@
                     }
                 ?>
             </span>
-            <div class="dropdown-divider"></div>
+            <div class="dropdown-divider"></div> 
             <?php 
                 if(isset($_SESSION['cardItem'])) {
                     $items = $_SESSION['cardItem'];
                     $countItem = array_count_values($items);
-                    foreach($countItem as $pId => $count){ 
-                        echo '<a href="#" class="dropdown-item">
-                                <i class="fas fa-envelope mr-2"></i>'.$pId.'  new order
-                                <span class="float-right text-muted text-sm"> '.$count.' item</span>
-                            </a>';
+                    foreach($countItem as $productID => $count){ 
+                        include_once('config/Database.php');
+                        include_once('service/ProductController.php');
+
+                        $db = new DB();
+                        $product = new ProductController($db);
+
+                        $getProduct = $product->getProductOneItem($productID); 
+
+                        foreach ($getProduct as $item) {
+                            echo "<a href='#' class='dropdown-item'>
+                                    {$item['productName']}      
+                                    <span class='float-right text-muted text-sm'>{$count} item</span>
+                                </a>";
+                        }
                     }
                 }else{
                     echo '<a href="#" class="dropdown-item">

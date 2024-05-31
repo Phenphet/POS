@@ -2,10 +2,15 @@
     class CardController{
         public function addCard($id){
             if(isset($id)){
+
                 if(!isset($_SESSION['cardItem'])){
                     $_SESSION['cardItem'] = [];
                 }
                 $_SESSION['cardItem'][] = $id;
+                // [
+                //     'id'=>$id,
+                    
+                // ];
                 return true;
             }else{
                 return false;

@@ -42,7 +42,29 @@
                     ON 
                         tblcategorie.categoryID = tblproducts.productCategoryID
                     WHERE 
-                        md5(productID)=:idproduct';
+                        md5(productID) = :idproduct';
+
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':idproduct', $id);
+                $stmt->execute();
+                $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+                $result = $stmt->fetchAll();
+                return $result;
+            } catch (\PDOException $e) {
+                echo 'error -> '.$e->getMessage();
+            }
+        }
+
+        public function getProductOneItem($id) {
+            try {
+                $query = "SELECT 
+                            productID, 
+                            productName, 
+                            productPrice 
+                        FROM 
+                            tblproducts 
+                        WHERE 
+                            productID = :idproduct";
 
                 $stmt = $this->con->prepare($query);
                 $stmt->bindParam(':idproduct', $id);
@@ -111,5 +133,18 @@
                 echo 'error -> '.$e->getMessage();
                 return false;
             }
+        }
+
+        public function countProduct(){
+            $query = "SELECT 
+                        COUNT(*)
+                    FROM 
+                        tblproducts";
+                
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchColumn();
+            return $result;
         }
     }
