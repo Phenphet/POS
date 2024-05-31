@@ -58,14 +58,14 @@
                     </div>
                 </div>
                 <div class="col-lg-3 col-12">
-                <div class="small-box bg-success">
-                    <div class="inner text-center">
-                        <h3>150</h3>
-                        <p>Report</p>
+                    <div class="small-box bg-success">
+                        <div class="inner text-center">
+                            <h3>150</h3>
+                            <p>Report</p>
+                        </div>
+                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
             </div>
 
             <div class="row gap-3 column-gap-3">

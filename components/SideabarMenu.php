@@ -7,6 +7,7 @@
                 <p>Dashboard</p>
             </a>
         </li>
+        <li class="nav-header">PRODUCTS</li>
         <li class="nav-item">
             <a href="product.php" class="nav-link" id="active2">
                 <i class="nav-icon fas fa-edit"></i>
@@ -19,12 +20,14 @@
                 <p>Category</p>
             </a>
         </li>
+        <li class="nav-header">MENEGEMENT</li>
         <li class="nav-item">
             <a href="sale.php" class="nav-link" id="active4">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>Store management</p>
             </a>
         </li>
+        <li class="nav-header">REPORTS</li>
         <li class="nav-item">
             <a href="report.php" class="nav-link" id="active5">
                 <i class="nav-icon fas fa-edit"></i>
