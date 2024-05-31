@@ -130,8 +130,3 @@
         bsCustomFileInput.init();
     });
 </script>
-<script>
-const cancel = () => {
-    window.location.href = 'product.php'
-}
-</script>
