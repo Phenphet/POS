@@ -15,17 +15,16 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class=" sidebar-mini layout-fixed">
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
            <?php include_once('components/NavLeft.php'); ?>
            <?php include_once('components/NavRight.php'); ?>
         </nav>  
-        <aside class="main-sidebar sidebar-dark-primary elevation-4 ">
+        <aside class="main-sidebar sidebar-dark-info  ">
             <a href="index.php" class="brand-link text-center">
                 <span class="brand-text font-weight-light">AdminPanel</span>
-            </a>
-           
-                <?php include_once('components/SideabarMenu.php'); ?>
-            </div>
+            </a>    
+          
+            <?php include_once('components/SideabarMenu.php'); ?>
         </aside>       
