@@ -7,6 +7,7 @@
     $db = new DB;
     $products = new ProductController($db);
     $category = new CategoryController($db);
+
 ?>
 <div class="content-wrapper">   
     <div class="content-header">
@@ -32,6 +33,10 @@
             <?php 
                 if(isset($_GET['product'])) :
                     $idProduct = htmlspecialchars($_GET['product']);
+                    if(isset($_SESSION['idGet'])){
+                        unset($_SESSION['idGet']);
+                    }
+                    $_SESSION['idGet'] = $idProduct;
                     $dataProduct = $products->getProductOne($idProduct);
                     if(!empty($dataProduct)) : ?>
                         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST" enctype="multipart/form-data">
@@ -64,11 +69,11 @@
                                         <input name="productPrice" type="text" class="form-control" id="productPrice" placeholder="ราคา" value="<?php echo $product['productPrice']?>">
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputFile">File input</label>
+                                        <label for="exampleInputFile">File input <?php echo $product['img']?></label>
                                         <div class="input-group">
                                             <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="productImage" name="productImage">
-                                            <label class="custom-file-label" for="productImage"><?php echo $product['img']?></label>
+                                            <label class="custom-file-label" for="productImage">Choose file</label>
                                             </div>
                                                 <div class="input-group-append">
                                                 <span class="input-group-text">Upload</span>
@@ -78,21 +83,13 @@
                                 </div>
                             <?php endforeach; ?>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-primary" name="btnEdit">Submit</button>
+                                <button type="submit" class="btn btn-warning" name="btnEdit">แก้ไข</button>
+                                <button type="submit"  class="btn btn-danger" name="btnCancel">ยกเลิก</button>
                             </div>
                         </form>
-                    <?php else : 
-                            echo "  <script>
-                                        alert('ไม่พบข้อมูลที่คุณต้องการอัพเดต')
-                                        window.location.href = 'product.php'
-                                    </script>"; 
-
-                    endif;
-                else:
-                    echo " <script>
-                                alert('เกิดข้อผิดพลาดของระบบ')
-                                window.location.href = 'product.php'
-                            </script>";
+                    <?php
+                    endif ;
+               
                 endif;
             ?>
         </div>
@@ -107,10 +104,34 @@
             </script>";
     }
 ?>
+<?php 
+    if(isset($_POST['btnEdit'])){
+        echo "<script>
+                alert('อัพเดตข้อมูล')
+                window.location.href = 'product.php'
+            </script>";
+        unset($_SESSION['idGet']);
+    }
+    
+    if(isset($_POST['btnCancel'])){ ?>
+        <script>
+            const result = confirm('yes or no ?')
+            if(result){
+                window.location.href = 'product.php';
+            }else{
+                window.location.href = 'editproduct.php?product=<?php echo $_SESSION['idGet'] ; ?>'
+            }
+        </script>
+<?php } ?>
 <?php include_once('layout/footer.php'); ?>
 <script src="assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <script>
     $(function () {
         bsCustomFileInput.init();
     });
+</script>
+<script>
+const cancel = () => {
+    window.location.href = 'product.php'
+}
 </script>
