@@ -8,6 +8,7 @@
     $products = new ProductController($db);
     $category = new CategoryController($db);
 
+    $path = 'assets/img/';
 ?>
 <div class="content-wrapper">   
     <div class="content-header">
@@ -72,7 +73,7 @@
                                         <label for="exampleInputFile">File input <?php echo $product['img']?></label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="productImage" name="productImage">
+                                            <input type="file" class="custom-file-input" id="productImage" name="productImage" accept="image/png, image/gif, image/jpeg">
                                             <label class="custom-file-label" for="productImage">Choose file</label>
                                             </div>
                                                 <div class="input-group-append">
@@ -105,21 +106,32 @@
 ?>
 <?php 
     if(isset($_POST['btnEdit'])){
-        // unset($_SESSION['idGet']);
         $productName = htmlspecialchars($_POST['productName']);
         $productCategory = htmlspecialchars($_POST['productCategory']);
         $productStock = htmlspecialchars($_POST['productStock']);
         $productPrice = htmlspecialchars($_POST['productPrice']);
         $productID = $_SESSION['idGet'];
-
-        if (empty($_FILES['productImage'])){
+        if (isset($_FILES['productImage']) && !empty($_FILES['productImage']['name'])){
             $productImage = $_FILES['productImage']['name'];
             $poductImageTmp = $_FILES['productImage']['tmp_name'];
-
-            echo "<script>
-                alert('มีรูปภาพ')
-            </script>";
-        }else{
+            $stmt = $products->getProductOneItem($productID);
+            foreach ($stmt as $item) {
+                if($item['img'] && file_exists($path . $item['img'])){
+                    unlink($path . $item['img']);
+                }
+            }
+            $nameFile = time().'-'.$productImage;
+            $stmtUpdate = $products->updateProductForImg( $productName,  $productCategory, $productStock,  $productPrice, $nameFile,  $productID);
+            $allpath = $path.$nameFile;
+            if($stmtUpdate){
+                move_uploaded_file($poductImageTmp, $allpath);
+                echo "<script>
+                        alert('เเก้ไขข้อมูลสินค้าเรียบร้อย');
+                        window.location.href='product.php'
+                    </script>";
+            }
+        }
+        else{
             $stmt = $products->updateProductNotImg($productName,  $productCategory,  $productStock,  $productPrice, $productID);
             if($stmt){
                 unset($_SESSION['idGet']);

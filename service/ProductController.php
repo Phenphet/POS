@@ -62,7 +62,8 @@
                 $query = "SELECT 
                             productID, 
                             productName, 
-                            productPrice 
+                            productPrice,
+                            img
                         FROM 
                             tblproducts 
                         WHERE 
@@ -84,6 +85,7 @@
                         tblproducts.productID, 
                         tblproducts.productName, 
                         tblproducts.productPrice, 
+                        tblproducts.productStock, 
                         tblproducts.img, 
                         tblcategorie.categoryName, 
                         tblproducts.created_at, 
@@ -140,6 +142,7 @@
             }
         }
 
+
         public function countProduct(){
             $query = "SELECT 
                         COUNT(*)
@@ -154,7 +157,30 @@
         }
 
         public function updateProductForImg($productName, $productCategory, $productStock, $productPrice, $productImage, $productID){
-
+            $query = "UPDATE  
+                        tblproducts
+                    SET 
+                        productName = :productName, 
+                        productCategoryID = :productCategory, 
+                        productStock = :productStock,
+                        productPrice = :productPrice,
+                        img = :productImg
+                    WHERE 
+                        productID = :productID";
+            try {
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':productName', $productName);
+                $stmt->bindParam(':productCategory', $productCategory);
+                $stmt->bindParam(':productStock', $productStock);
+                $stmt->bindParam(':productPrice', $productPrice);
+                $stmt->bindParam(':productImg', $productImage);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                echo 'message Error -> '. $e->getMessage();
+                return false;
+            }
         }
         public function updateProductNotImg($productName, $productCategory, $productStock, $productPrice, $productID){
             $query = "UPDATE  

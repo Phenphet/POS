@@ -12,9 +12,9 @@
            header('Location: product.php');
         }else{
             echo 'error';
+            header('Location: product.php');
         }
     }else{
-        echo 'None test';
-
+        header('Location: product.php');
     }
 ?>

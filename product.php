@@ -44,7 +44,8 @@
                     <th scope="col">รูปสินค้า</th>
                     <th scope="col">ชื่อสินค้า</th>
                     <th scope="col">หมวดหมู่</th>
-                    <th scope="col">ราคาสินค้า</th>
+                    <th scope="col">จำนวน</th>
+                    <th scope="col">ราคา</th>
                     <th scope="col">create_at</th>
                     <th scope="col">update_at</th>
                     <th scope="col"></th>
@@ -58,6 +59,7 @@
                             <td><img src="assets/img/<?php echo $item['img']?>" alt="<?php echo $item['img']?>" width="50px" class="img-thumbnail"></td>
                             <td><?php echo $item['productName']?></td>
                             <td><?php echo $item['categoryName']?></td>
+                            <td><?php echo $item['productStock']?></td>
                             <td><?php echo $item['productPrice']?> บาท</td>
                             <td><?php echo $item['created_at']?></td>
                             <td><?php echo $item['updated_at']?></td>
