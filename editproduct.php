@@ -105,11 +105,30 @@
 ?>
 <?php 
     if(isset($_POST['btnEdit'])){
-        echo "<script>
-                alert('อัพเดตข้อมูล')
-                window.location.href = 'product.php'
+        // unset($_SESSION['idGet']);
+        $productName = htmlspecialchars($_POST['productName']);
+        $productCategory = htmlspecialchars($_POST['productCategory']);
+        $productStock = htmlspecialchars($_POST['productStock']);
+        $productPrice = htmlspecialchars($_POST['productPrice']);
+        $productID = $_SESSION['idGet'];
+
+        if (empty($_FILES['productImage'])){
+            $productImage = $_FILES['productImage']['name'];
+            $poductImageTmp = $_FILES['productImage']['tmp_name'];
+
+            echo "<script>
+                alert('มีรูปภาพ')
             </script>";
-        unset($_SESSION['idGet']);
+        }else{
+            $stmt = $products->updateProductNotImg($productName,  $productCategory,  $productStock,  $productPrice, $productID);
+            if($stmt){
+                unset($_SESSION['idGet']);
+                echo "<script>
+                        alert('เเก้ไขข้อมูลสินค้าเรียบร้อย');
+                        window.location.href = 'product.php'
+                    </script>";
+            }
+        }
     }
     
     if(isset($_POST['btnCancel'])){ ?>

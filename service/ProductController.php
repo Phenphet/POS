@@ -42,7 +42,7 @@
                     ON 
                         tblcategorie.categoryID = tblproducts.productCategoryID
                     WHERE 
-                        md5(productID) = :idproduct';
+                       productID = :idproduct';
 
                 $stmt = $this->con->prepare($query);
                 $stmt->bindParam(':idproduct', $id);
@@ -146,5 +146,33 @@
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $result = $stmt->fetchColumn();
             return $result;
+        }
+
+        public function updateProductForImg($productName, $productCategory, $productStock, $productPrice, $productImage, $productID){
+
+        }
+        public function updateProductNotImg($productName, $productCategory, $productStock, $productPrice, $productID){
+            $query = "UPDATE  
+                        tblproducts
+                    SET 
+                        productName = :productName, 
+                        productCategoryID = :productCategory, 
+                        productStock = :productStock,
+                        productPrice= :productPrice
+                    WHERE 
+                        productID = :productID";
+            try {
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':productName', $productName);
+                $stmt->bindParam(':productCategory', $productCategory);
+                $stmt->bindParam(':productStock', $productStock);
+                $stmt->bindParam(':productPrice', $productPrice);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                echo 'message Error -> '. $e->getMessage();
+                return false;
+            }
         }
     }
