@@ -72,7 +72,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" name="btnSubmit">Submit</button>
+                        <button type="submit" class="btn btn-primary" name="btnSubmit">เพิ่มรายการ</button>
+                        <button type="submit" class="btn btn-danger" name="btnCancel">ยกเลิก</button>
                     </div>
                 </form>
             </div>
@@ -116,6 +117,12 @@
                 die();
             }
         }
+    }
+    if(isset($_POST['btnCancel'])){
+        echo "<script>
+                alert('ยกเลิก')
+                window.location.href = 'product.php'
+            </script>";
     }
     ?>
 </div>
