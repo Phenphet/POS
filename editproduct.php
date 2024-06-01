@@ -88,8 +88,7 @@
                             </div>
                         </form>
                     <?php
-                    endif ;
-               
+                    endif;
                 endif;
             ?>
         </div>
