@@ -7,7 +7,7 @@
             $this->con = $db->connectDB();
         }
 
-        public function getProduct(){
+        public function Product(){
             $query = 'SELECT 
                         productID, 
                         productName, 
@@ -15,6 +15,8 @@
                         img 
                     FROM 
                         tblproducts 
+                    WHERE 
+                        deleted = 0
                     ORDER BY 
                         productID DESC';
 
@@ -92,8 +94,11 @@
                         tblcategorie 
                     ON 
                         tblcategorie.categoryID = tblproducts.productCategoryID 
+                    WHERE 
+                        tblproducts.deleted = 0 
                     ORDER BY 
-                        tblproducts.productID ASC";
+                        tblproducts.productID ASC
+                   ";
                         
             $stmt = $this->con->prepare($query);
             $stmt->execute();
@@ -174,5 +179,26 @@
                 echo 'message Error -> '. $e->getMessage();
                 return false;
             }
+        }
+        public function deleteProduct($productID){
+            $query = "UPDATE  
+                        tblproducts
+                    SET 
+                        deleted=1
+                    WHERE 
+                        productID = :productID";
+            try {
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                echo 'error message -> '.$e->getMessage();
+                return false;
+            }
+            
+        }
+        public function deleteProductPermanently($productID){
+            $query = "DELETE FROM tblproducts WHERE productID = :productID";
         }
     }

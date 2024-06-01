@@ -64,7 +64,7 @@
                             <td>
                                 <div>
                                     <a href="editproduct.php?product=<?php echo $item['productID']; ?>" class="btn btn-warning">edit</a>
-                                    <a href="productDelete.php?test=<?php echo $item['productID']; ?>" class="btn btn-danger">delete</a>
+                                    <a href="productDelete.php?product=<?php echo $item['productID']; ?>" class="btn btn-danger">delete</a>
                                 </div>
                             </td>
                         </tr>

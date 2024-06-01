@@ -1,7 +1,20 @@
 <?php
-    // กำหนดค่าให้กับตัวแปร $getValue โดยใช้ ternary operator
-    $getValue = isset($_GET['test']) && $_GET['test'] !== "" ? $_GET['test'] : 'None';
+    include_once('config/Database.php');
+    include_once('service/ProductController.php');
 
-    // แสดงผลค่า $getValue
-    echo $getValue;
+    $db = new DB();
+    $product = new ProductController($db);
+    $getValue = isset($_GET['product']) && $_GET['product'] !== "" ? $_GET['product'] : 'None';
+
+    if($getValue !== 'None'){
+        $stmt = $product->deleteProduct($getValue);
+        if($stmt){
+           header('Location: product.php');
+        }else{
+            echo 'error';
+        }
+    }else{
+        echo 'None test';
+
+    }
 ?>
