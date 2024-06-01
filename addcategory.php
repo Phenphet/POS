@@ -1,8 +1,9 @@
 <?php include_once('layout/header.php'); ?>
 
 <?php 
-    include_once('sevice/C');
-
+        include_once('config/Database.php');
+        include_once('service/CategoryController.php');
+        include_once('service/ProductController.php');
 ?>
 <div class="content-wrapper">
     <div class="content-header">
