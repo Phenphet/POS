@@ -26,7 +26,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <?php $allProduct = $product->getProduct(); 
+                <?php $allProduct = $product->Product(); 
                 foreach($allProduct as $item): ?>
                     <div class="col-12 col-lg-3">
                         <button class="btn m-0 p-0" onclick='addcard(<?php echo $item["productID"]; ?>)'>
