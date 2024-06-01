@@ -76,7 +76,7 @@
     if ($uri == $_SERVER['REQUEST_URI']){
 
        echo "<script>
-                const active = document.getElementById('active3')
+                const active = document.getElementById('Category')
                 active.classList.add('active')
             </script>";
     }

@@ -1,9 +1,8 @@
-<?php include_once('layout/header.php'); ?>
+<?php include_once 'layout/header.php'; ?>
 
-<!-- <?php 
-    if(isset($_POST['btnEdit'])){
-        
-    }
+<!-- <?php
+if (isset($_POST['btnEdit'])) {
+}
 
 ?> -->
 <div class="content-wrapper">
@@ -27,7 +26,7 @@
             <div class="card-header">
                 <h3 class="card-title">Edit</h3>
             </div>
-            <form action="<?php ?>"  method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"  method="POST">
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
@@ -63,11 +62,10 @@
 <?php
 $uri = $_SERVER['REQUEST_URI'];
 if ($uri == $_SERVER['REQUEST_URI']) {
-
     echo "<script>
                 const active = document.getElementById('active3')
                 active.classList.add('active')
             </script>";
 }
 ?>
-<?php include_once('layout/footer.php'); ?>
+<?php include_once 'layout/footer.php'; ?>

@@ -22,7 +22,7 @@
                     <button onclick="removeCard()">remove</button>
                    
                 <?php }else{
-                    echo '<a href="sale.php" class="btn btn-danger">no item</a>';
+                    echo '<a href="store.php" class="btn btn-danger">no item</a>';
                     
                     echo '<br>';
                 }
@@ -49,7 +49,7 @@
     $uri = $_SERVER['REQUEST_URI'];
     if ($uri == $_SERVER['REQUEST_URI']){
        echo "<script>
-                const active = document.getElementById('active5')
+                const active = document.getElementById('Order')
                 active.classList.add('active')
             </script>";
     }

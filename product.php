@@ -80,7 +80,7 @@
     $uri = $_SERVER['REQUEST_URI'];
     if ($uri == $_SERVER['REQUEST_URI']){
        echo "<script>
-                const active = document.getElementById('active2')
+                const active = document.getElementById('Product')
                 active.classList.add('active')
             </script>";
     }
