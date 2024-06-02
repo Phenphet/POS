@@ -51,7 +51,14 @@
                 <div class="col-lg-3 col-12">
                     <div class="small-box bg-danger">
                         <div class="inner text-center">
-                            <h3>150</h3>
+                        <?php 
+                            if(isset($_SESSION['cardItem'])) {
+                                $countOder = count($_SESSION['cardItem']);
+                                echo "<h3>{$countOder}</h3>";
+                            }else{
+                                echo "<h3>0</h3>";
+                            }
+                        ?>
                             <p>Orders</p>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
@@ -60,7 +67,7 @@
                 <div class="col-lg-3 col-12">
                     <div class="small-box bg-success">
                         <div class="inner text-center">
-                            <h3>150</h3>
+                            <h3>0</h3>
                             <p>Report</p>
                         </div>
                         <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>

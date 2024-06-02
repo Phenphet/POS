@@ -16,11 +16,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="productRemove.php" class="nav-link" id="ProductRemove">
+                <a href="productremove.php" class="nav-link" id="ProductRemove">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>ProductRemove</p>
                 </a>
             </li>
+            <li class="nav-header">CATEGORY</li>
             <li class="nav-item">
                 <a href="category.php" class="nav-link" id="Category">
                     <i class="nav-icon fas fa-edit"></i>

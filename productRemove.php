@@ -13,12 +13,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Product</h1>
+                    <h1 class="m-0">Product Remove</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Product Remove</a></li>
-                        <li class="breadcrumb-item active">All product remove</li>
+                        <li class="breadcrumb-item"><a href="#">Remove</a></li>
+                        <li class="breadcrumb-item active">All remove</li>
                     </ol>
                 </div>
             </div>
@@ -26,7 +26,42 @@
     </div>
     <section class="content">
         <div class="container-fluid table-responsive">
-            
+        <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">รหัสสินค้า</th>
+                    <th scope="col">รูปสินค้า</th>
+                    <th scope="col">ชื่อสินค้า</th>
+                    <th scope="col">หมวดหมู่</th>
+                    <th scope="col">จำนวน</th>
+                    <th scope="col">ราคา</th>
+                    <th scope="col">create_at</th>
+                    <th scope="col">update_at</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $products = $product->tableProductRemove(); 
+                    foreach($products as $index => $item):?>
+                        <tr>
+                        <th scope="row"><?php echo $index+1?></th>
+                            <td><img src="assets/img/<?php echo $item['img']?>" alt="<?php echo $item['img']?>" width="50px" class="img-thumbnail"></td>
+                            <td><?php echo $item['productName']?></td>
+                            <td><?php echo $item['categoryName']?></td>
+                            <td><?php echo $item['productStock']?></td>
+                            <td><?php echo $item['productPrice']?> บาท</td>
+                            <td><?php echo $item['created_at']?></td>
+                            <td><?php echo $item['updated_at']?></td>
+                            <td>
+                                <div>
+                                    <a href="productcancel.php?product=<?php echo $item['productID']; ?>" class="btn btn-warning">ยกเลิก</a>
+                                    <a href="productdeleteitem.php?product=<?php echo $item['productID']; ?>" class="btn btn-danger">ลบถาวร</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                </tbody>
+            </table>
         </div>
     </section>
 </div> 

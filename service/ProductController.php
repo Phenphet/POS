@@ -7,7 +7,8 @@
             $this->con = $db->connectDB();
         }
 
-        public function Product(){
+        public function Product()
+        {
             $query = 'SELECT 
                         productID, 
                         productName, 
@@ -27,7 +28,9 @@
             return $result;
         }
 
-        public function getProductOne($id){
+        
+        public function getProductOne($id)
+        {
             try {
                 $query = 'SELECT 
                        tblproducts.productID AS productID, 
@@ -57,7 +60,8 @@
             }
         }
 
-        public function getProductOneItem($id) {
+        public function getProductOneItem($id) 
+        {
             try {
                 $query = "SELECT 
                             productID, 
@@ -80,7 +84,8 @@
             }
         }
 
-        public function tableProduct(){
+        public function tableProduct()
+        {
             $query = "SELECT 
                         tblproducts.productID, 
                         tblproducts.productName, 
@@ -109,7 +114,37 @@
             return $result;
         }
 
-        public function addProduct($productName, $productCategory, $productStock, $productPrice, $productImage){
+        public function tableProductRemove()
+        {
+            $query = "SELECT 
+                        tblproducts.productID, 
+                        tblproducts.productName, 
+                        tblproducts.productPrice, 
+                        tblproducts.productStock, 
+                        tblproducts.img, 
+                        tblcategorie.categoryName, 
+                        tblproducts.created_at, 
+                        tblproducts.updated_at 
+                    FROM 
+                        tblproducts
+                    INNER JOIN 
+                        tblcategorie 
+                    ON 
+                        tblcategorie.categoryID = tblproducts.productCategoryID 
+                    WHERE 
+                        tblproducts.deleted = 1
+                    ORDER BY 
+                        tblproducts.productID ASC";
+                        
+            $stmt = $this->con->prepare($query);
+            $stmt->execute();
+            $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll();
+            return $result;
+        }
+
+        public function addProduct($productName, $productCategory, $productStock, $productPrice, $productImage)
+        {
             try {
                 $query = "INSERT INTO 
                             tblproducts (
@@ -126,8 +161,8 @@
                                 :productStock, 
                                 :productPrice, 
                                 0, 
-                                :img
-                            )";
+                                :img)";
+
                 $stmt = $this->con->prepare($query);
                 $stmt->bindParam(':productName', $productName);
                 $stmt->bindParam(':productCategoryID', $productCategory);
@@ -143,7 +178,8 @@
         }
 
 
-        public function countProduct(){
+        public function countProduct()
+        {
             $query = "SELECT 
                         COUNT(*)
                     FROM 
@@ -156,7 +192,8 @@
             return $result;
         }
 
-        public function updateProductForImg($productName, $productCategory, $productStock, $productPrice, $productImage, $productID){
+        public function updateProductForImg($productName, $productCategory, $productStock, $productPrice, $productImage, $productID)
+        {
             $query = "UPDATE  
                         tblproducts
                     SET 
@@ -182,7 +219,8 @@
                 return false;
             }
         }
-        public function updateProductNotImg($productName, $productCategory, $productStock, $productPrice, $productID){
+        public function updateProductNotImg($productName, $productCategory, $productStock, $productPrice, $productID)
+        {
             $query = "UPDATE  
                         tblproducts
                     SET 
@@ -206,7 +244,8 @@
                 return false;
             }
         }
-        public function deleteProduct($productID){
+        public function deleteProduct($productID)
+        {
             $query = "UPDATE  
                         tblproducts
                     SET 
@@ -224,7 +263,38 @@
             }
             
         }
-        public function deleteProductPermanently($productID){
+
+        public function deleteProductCancel ($productID)
+        {
+            $query = "UPDATE  
+                        tblproducts
+                    SET 
+                        deleted=0
+                    WHERE 
+                        productID = :productID";
+            try {
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                echo 'error message -> '.$e->getMessage();
+                return false;
+            }
+            
+        }
+
+        public function deleteProductPermanently($productID)
+        {
             $query = "DELETE FROM tblproducts WHERE productID = :productID";
+            try {
+                $stmt = $this->con->prepare($query);
+                $stmt->bindParam(':productID', $productID);
+                $stmt->execute();
+                return true;
+            } catch (\PDOException $e) {
+                echo 'error message -> '.$e->getMessage();
+                return false;
+            }
         }
     }

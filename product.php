@@ -7,7 +7,7 @@
     $db = new DB;
     $product = new ProductController($db);
 
-    ?>
+?>
 <div class="content-wrapper">   
     <div class="content-header">
         <div class="container-fluid">
@@ -65,8 +65,8 @@
                             <td><?php echo $item['updated_at']?></td>
                             <td>
                                 <div>
-                                    <a href="editproduct.php?product=<?php echo $item['productID']; ?>" class="btn btn-warning">edit</a>
-                                    <a href="productDelete.php?product=<?php echo $item['productID']; ?>" class="btn btn-danger">delete</a>
+                                    <a href="editproduct.php?product=<?php echo $item['productID']; ?>" class="btn btn-warning">แก้ไข</a>
+                                    <a href="productdelete.php?product=<?php echo $item['productID']; ?>" class="btn btn-danger">ยกเลิกการขาย</a>
                                 </div>
                             </td>
                         </tr>
